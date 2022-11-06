@@ -11,7 +11,7 @@ var pedidos = [];//Array de pedidos
 
 
 try {
-    var contenido = fs.readFileSync('./Archivos/Socios.txt', 'utf-8');
+    var contenido = fs.readFileSync('./Archivos/Para_Guardar/Socios.txt', 'utf-8');
     socios = JSON.parse(contenido);
 } catch (erroSocios) {
     console.log("No se pudo cargar a los socios");
@@ -20,15 +20,15 @@ try {
 
 
 try {
-    var contenidoLibro = fs.readFileSync('./Archivos/Libros.txt', 'utf-8');
+    var contenidoLibro = fs.readFileSync('./Archivos/Para_Guardar/Libros.txt', 'utf-8');
     libros = JSON.parse(contenidoLibro);
 } catch (error) {
-    console.log("No se pudo parcear el contenido")
+    console.log("No se pudo parcear el contenido de Libros.txt")
     libros = [];
 }//Cargo los libros que se encuentran en el archivo txt
 
 try {
-    var contenidoPedido = fs.readFileSync('./Archivos/Pedidos.txt', 'utf-8');
+    var contenidoPedido = fs.readFileSync('./Archivos/Para_Guardar/Pedidos.txt', 'utf-8');
     pedidos = JSON.parse(contenidoPedido);
 } catch (errorPedido) {
     console.log("No se pudo parcear el contenido del archivo Pedido.txt")
@@ -63,7 +63,7 @@ modelo.guardarSocio=(atributos) => {
         socios.push(so1);
         var sociosString = JSON.stringify(socios);
 
-        fs.writeFileSync('./Archivos/Socios.txt', sociosString, (error) => {
+        fs.writeFileSync('./Archivos/Para_Guardar/Socios.txt', sociosString, (error) => {
             if (error) {
                 console.log('No se puede escribir en archivos');
             } else {
@@ -91,7 +91,7 @@ modelo.guardarLibro= (atributosLibro)=>{
 
     var librosString = JSON.stringify(libros);
 
-    fs.writeFile('./Archivos/Libros.txt', librosString, (error) => {
+    fs.writeFile('./Archivos/Para_Guardar/Libros.txt', librosString, (error) => {
 
         if (error) {
             console.log('No se puede escribir en archivos');
@@ -145,7 +145,7 @@ modelo.guardarPedido= (atributosPedido)=> {
     pedidos.push(pedido);
     var pedidosString = JSON.stringify(pedidos);
 
-    fs.writeFileSync('./Archivos/Pedidos.txt', pedidosString, (error) => {
+    fs.writeFileSync('./Archivos/Para_Guardar/Pedidos.txt', pedidosString, (error) => {
         if (error) {
             console.log('No se puede escribir en archivos');
         } else {
