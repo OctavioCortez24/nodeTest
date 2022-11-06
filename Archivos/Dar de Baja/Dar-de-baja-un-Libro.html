@@ -52,12 +52,12 @@
 
         const mostrarLibro= (libros) => {
            
-            var striLibrosSelect= "<option selected>Seleccionar un Libro</option>";
+            var striLibrosSelect= "<option selected value=''>Seleccionar un Libro</option>";
             for (var i = 0; i < libros.length; i++) {
                 striLibrosSelect += "<option value='"+JSON.stringify(libros[i])+"'>"+libros[i].titulo+"</option>";
             }
 
-            striLibrosSelect="<select class='form-select' aria-label='Default select example' name='libro'>"+striLibrosSelect+"</select>";
+            striLibrosSelect="<select class='form-select' aria-label='Default select example' name='libro' required>"+striLibrosSelect+"</select>";
 
             document.getElementById("SelectLibros").innerHTML = striLibrosSelect;
         }

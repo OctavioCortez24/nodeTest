@@ -62,13 +62,13 @@
 
         const mostrarData = (socios) => {
 
-            var striSelectSocio = "<option selected>Seleccionar un socio</option>";
+            var striSelectSocio = "<option selected value=''>Seleccionar un socio</option>";
             for (var i = 0; i < socios.length; i++) {
                
                 striSelectSocio += "<option value='"+JSON.stringify(socios[i])+"''>"+socios[i].name+" "+ socios[i].apellido+"</option>";
             }
 
-            striSelectSocio="<select class='form-select' aria-label='Default select example' name='socio'>"+striSelectSocio+"</select>"
+            striSelectSocio="<select class='form-select' aria-label='Default select example' name='socio' required>"+striSelectSocio+"</select>"
 
             document.getElementById("SelectSocios").innerHTML = striSelectSocio;
         }
@@ -84,12 +84,12 @@
 
         const mostrarLibro= (libros) => {
            
-            var striLibrosSelect= "<option selected>Seleccionar un Libro</option>";
+            var striLibrosSelect= "<option selected value=''>Seleccionar un Libro</option>";
             for (var i = 0; i < libros.length; i++) {
                 striLibrosSelect += "<option value='"+JSON.stringify(libros[i])+"'>"+libros[i].titulo+"</option>";
             }
 
-            striLibrosSelect="<select class='form-select' aria-label='Default select example' name='libro'>"+striLibrosSelect+"</select>";
+            striLibrosSelect="<select class='form-select' aria-label='Default select example' name='libro' required>"+striLibrosSelect+"</select>";
 
             document.getElementById("SelectLibros").innerHTML = striLibrosSelect;
         }

@@ -27,7 +27,45 @@
         <li><a href="http://localhost:3000/Mostrar-Pedidos">Mostrar Pedidos</a></li>
         <li><a href="http://localhost:3000/Devolver-un-libro">Devolver Libro</a></li>
     </ul>
-    <h1 class="display-5" align="Center">Dar de baja un Socio</h1>
+   
+    <div class="container" align="Center">
+        <h1 class="display-5" align="Center">Dar de baja un Socio</h1>
+
+        <form action="http://localhost:3000/Dar-de-baja-un-SocioPost" method="post">
+            <div class="mb-3">
+                <p>
+                    <div id="SelectSocios"></div>
+                </p>
+            </div>
+    
+            <input type="submit" class="btn btn-outline-secondary" value="Enviar">
+        </form>
+    </div>
+
+
+
+    <script>
+
+         //--------------Cargo los Socios en un Select------------------------
+         let url = 'http://localhost:3000/VerSociosTabla';
+        fetch(url)
+            .then(response => response.json())
+            .then(socios => mostrarData(socios))
+            .catch(error => console.log(error))
+
+        const mostrarData = (socios) => {
+
+            var striSelectSocio = "<option selected value=''>Seleccionar un socio</option>";
+            for (var i = 0; i < socios.length; i++) {
+               
+                striSelectSocio += "<option value='"+JSON.stringify(socios[i])+"''>"+socios[i].name+" "+ socios[i].apellido+"</option>";
+            }
+
+            striSelectSocio="<select class='form-select' aria-label='Default select example' name='socio' required>"+striSelectSocio+"</select>"
+
+            document.getElementById("SelectSocios").innerHTML = striSelectSocio;
+        }
+    </script>
 </body>
 
 </html>

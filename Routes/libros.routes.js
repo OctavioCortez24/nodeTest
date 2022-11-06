@@ -2,55 +2,28 @@ const express= require('express');
 const router = express.Router();
 const path = require('path');
 
-const funciones = require('../Modelo');//Importo las funciones del archivo Modelo.js
+
+const controlador=require('../Controladores/libro.controlador')
 
 //Añadir Libro--------------------------------------------Comienzo
-router.get('/AnadirUnLibro', (request, response) => {
-    //
-    response.sendFile(path.join(__dirname, '../Archivos/Forms/AnadirUnLibro.html'))
-
-});
-router.post('/AnadirUnLibroPost', (request, response) => {
-
-    funciones.guardarLibro(request.body);
-    response.redirect('/AnadirUnLibro');
-
-})
+router.get('/AnadirUnLibro', controlador.anadirLibro);
+router.post('/AnadirUnLibroPost', controlador.anadirLibroPost)
 
 //Añadir Libros--------------------------------------------Fin
 
 
 
 //Dar de baja------------------------------------Inicio
-router.get('/Dar-de-baja-un-Libro', (request, response) => {
-    response.sendFile(path.join(__dirname, '../Archivos/Dar de Baja/Dar-de-baja-un-Libro.html'))
-});
-router.post('/Dar-de-baja-un-LibroPost', (request, response) => {
-
-  
-    var libro = JSON.parse(request.body.libro);
-    libro.desactivado=true;
-
-    console.log(libro);
-    response.redirect('/Dar-de-baja-un-Libro');
-});
+router.get('/Dar-de-baja-un-Libro', controlador.darDeBaja);
+router.post('/Dar-de-baja-un-LibroPost', controlador.darDeBajaPost);
 //Dar de baja------------------------------------Fin
 
 
 
 //Mostrar Libros------------------------------Inicio
-router.get('/VerLibros', (request, response) => {
+router.get('/VerLibros', controlador.verLibros);
 
-    response.sendFile(path.join(__dirname, '../Archivos/ToShow/VerLibros.html'))
-
-});
-
-router.get('/VerLibrosTabla', (request, response) => {
-
-    var libros=funciones.enviarLibros();//Traigo el array de libros desde el archivo Modelo
-    response.send(libros);
-
-});
+router.get('/VerLibrosTabla', controlador.verLibrosTabla);
 //Mostrar Libros------------------------------Fin
 
 

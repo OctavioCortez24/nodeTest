@@ -1,5 +1,7 @@
-var fs = require('fs');
 
+const modelo={};//Objeto
+
+var fs = require('fs');
 const Clases = require('./Clases');
 var socios = [];//Array de Socios
 var libros = [];//Array de Libros
@@ -34,13 +36,15 @@ try {
 }//Cargo los pedidos que se encuentran en el archivo txt
 
 
-function guardarSocio(atributos) {
 
+modelo.guardarSocio=(atributos) => {
+    
     var nombre = atributos.name;
     var apellido = atributos.surname;
     var dNI = atributos.dni;
 
     var so1 = new Clases.Socio(nombre, apellido, dNI, false);//Instancio un socio
+    
     //Compruebo si existe un socio igual
     var bandera = false;
     var validacion = socios.map(socio => socio.name == so1.getName() & socio.apellido == so1.getApellido() & socio.dNI == so1.getDNI());
@@ -71,19 +75,13 @@ function guardarSocio(atributos) {
 
         console.log('No se guardo porque hay uno igual')
     }
-
-
 }
 
-
-function enviarSocios() {
-
+modelo.enviarSocios= ()=>{
     return socios;
-};
+}
 
-
-function guardarLibro(atributosLibro) {
-
+modelo.guardarLibro= (atributosLibro)=>{
     var tituloLibro = atributosLibro.titulo;
     var autorLibro = atributosLibro.nombreAutor;
     var categoriaLibro = atributosLibro.categoria;
@@ -101,15 +99,13 @@ function guardarLibro(atributosLibro) {
             console.log('Escritura existosa')
         }
     });
-
 }
 
-function enviarLibros(){
-    return libros
+modelo.enviarLibros= ()=>{
+    return libros;
 }
 
-function guardarPedido(atributosPedido) {
-
+modelo.guardarPedido= (atributosPedido)=> {
     const fechaActual = new Date();
 
     var fechaPrestamo = fechaActual.toLocaleDateString();
@@ -156,12 +152,10 @@ function guardarPedido(atributosPedido) {
             console.log('Escritura existosa')
         }
     });
-
-
 }
-function enviarPedidos(){
+
+modelo.enviarPedidos= ()=>{
     return pedidos;
 }
 
-
-module.exports = { guardarSocio, enviarSocios, guardarLibro, guardarPedido , enviarLibros, enviarPedidos};
+module.exports = modelo;
