@@ -25,7 +25,44 @@
         <li><a href="http://localhost:3000/Mostrar-Pedidos">Mostrar Pedidos</a></li>
         <li><a href="http://localhost:3000/Devolver-un-libro">Devolver Libro</a></li>
     </ul>
-    <h1 class="display-5" align="Center">Devolver un libro</h1>
+    
+    <div class="container" align="Center">
+        <h1 class="display-5" align="Center">Devolver un libro</h1>
+        <form action="http://localhost:3000/Devolver-un-libroPost" method="post">
+            <div class="mb-3">
+                <p>
+                    <div id="SelectLibros"></div>
+                </p>
+            </div>
+    
+            <input type="submit" class="btn btn-outline-secondary" value="Enviar">
+        </form>
+    </div>
+
+
+
+
+
+
+    <script>
+        let urlLibro = 'http://localhost:3000/VerLibrosTabla';
+       fetch(urlLibro)
+           .then(res => res.json())
+           .then(libros => mostrarLibro(libros))
+           .catch(error => console.log(error))
+
+       const mostrarLibro= (libros) => {
+          
+           var striLibrosSelect= "<option selected>Seleccionar un Libro</option>";
+           for (var i = 0; i < libros.length; i++) {
+               striLibrosSelect += "<option value='"+JSON.stringify(libros[i])+"'>"+libros[i].titulo+"</option>";
+           }
+
+           striLibrosSelect="<select class='form-select' aria-label='Default select example' name='libro'>"+striLibrosSelect+"</select>";
+
+           document.getElementById("SelectLibros").innerHTML = striLibrosSelect;
+       }
+   </script>
 </body>
 
 </html>
