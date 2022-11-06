@@ -1,6 +1,6 @@
 const path = require('path');
 const controlador={};//<----Objeto
-const modelo = require('../Modelo');//Importo las funciones del archivo Modelo.js
+const modelo = require('../Modelos/Libro.modelo');//Importo las funciones del archivo Libro.modelo.js
 
 controlador.anadirLibro= (request, response) => {
     //Envio el formulario para añadir un socio
@@ -18,12 +18,8 @@ controlador.darDeBaja=(request, response) => {
     response.sendFile(path.join(__dirname, '../Archivos/Dar de Baja/Dar-de-baja-un-Libro.html'))
 }
 controlador.darDeBajaPost=(request, response) => {
-    //Terminar esto
-  
-    var libro = JSON.parse(request.body.libro);
-    libro.desactivado=true;
 
-    console.log(libro);
+    modelo.darDeBajaLibro(request.body.libro);//Envio los atriubtos del libro que se seleciono
     response.redirect('/Dar-de-baja-un-Libro');
 }
 controlador.verLibros=(request, response) => {

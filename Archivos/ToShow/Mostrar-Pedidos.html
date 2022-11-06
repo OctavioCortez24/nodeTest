@@ -66,10 +66,9 @@
             var striTable = "";
             var reitegroLibro="";
             for (var i = 0; i < pedidos.length; i++) {
-                reitegroLibro=(pedidos[i].fechaReintegro==null)?"No Devuelto":"Devuelto";
+                reitegroLibro=(pedidos[i].fechaReintegro==null)?"No Devuelto":""+pedidos[i].fechaReintegro;
                 striTable += "<tr class='table-secondary' ><td>" + pedidos[i].prestamo + "</td><td>" + pedidos[i].fechaDevolucion+ "</td><td>" + pedidos[i].Libro.titulo + "</td><td>" + pedidos[i].Socio.dNI+ "</td><td>" + reitegroLibro+ "</td></tr>";
             }
-
 
             document.getElementById("tablaPedidos").innerHTML = striTable;
         }

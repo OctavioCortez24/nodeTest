@@ -54,7 +54,9 @@
            
             var striLibrosSelect= "<option selected value=''>Seleccionar un Libro</option>";
             for (var i = 0; i < libros.length; i++) {
-                striLibrosSelect += "<option value='"+JSON.stringify(libros[i])+"'>"+libros[i].titulo+"</option>";
+                if(!libros[i].desactivado){
+                    striLibrosSelect += "<option value='"+JSON.stringify(libros[i])+"'>"+libros[i].titulo+"</option>";
+                }
             }
 
             striLibrosSelect="<select class='form-select' aria-label='Default select example' name='libro' required>"+striLibrosSelect+"</select>";

@@ -55,7 +55,9 @@
           
            var striLibrosSelect= "<option selected value=''>Seleccionar un Libro</option>";
            for (var i = 0; i < libros.length; i++) {
-               striLibrosSelect += "<option value='"+JSON.stringify(libros[i])+"'>"+libros[i].titulo+"</option>";
+               if(!libros[i].desactivado & !libros[i].disponible){
+                striLibrosSelect += "<option value='"+JSON.stringify(libros[i])+"'>"+libros[i].titulo+"</option>";
+               }//Con este if lo que hago es solamente mostrar aquellos libros que no esten desactivados y esten pedidos
            }
 
            striLibrosSelect="<select class='form-select' aria-label='Default select example' name='libro' required>"+striLibrosSelect+"</select>";

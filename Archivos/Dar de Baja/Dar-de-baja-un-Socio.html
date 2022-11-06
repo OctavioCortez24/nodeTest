@@ -58,7 +58,9 @@
             var striSelectSocio = "<option selected value=''>Seleccionar un socio</option>";
             for (var i = 0; i < socios.length; i++) {
                
-                striSelectSocio += "<option value='"+JSON.stringify(socios[i])+"''>"+socios[i].name+" "+ socios[i].apellido+"</option>";
+                if(!socios[i].desactivado){
+                    striSelectSocio += "<option value='"+JSON.stringify(socios[i])+"''>"+socios[i].name+" "+ socios[i].apellido+"</option>";
+                }
             }
 
             striSelectSocio="<select class='form-select' aria-label='Default select example' name='socio' required>"+striSelectSocio+"</select>"

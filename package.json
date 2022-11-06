@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "\"echo \\\"Erro: no test specified\\\" && exit 1\"",
-    "dev": "nodemon --ignore feedback.json server.js",
+    "dev": "nodemon --ignore feedback.json Modelo.js",
     "devApp": "nodemon --ignore feedback.json app.js"
   },
   "repository": {

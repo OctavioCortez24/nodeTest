@@ -65,7 +65,9 @@
             var striSelectSocio = "<option selected value=''>Seleccionar un socio</option>";
             for (var i = 0; i < socios.length; i++) {
                
-                striSelectSocio += "<option value='"+JSON.stringify(socios[i])+"''>"+socios[i].name+" "+ socios[i].apellido+"</option>";
+                if(!socios[i].desactivado){
+                    striSelectSocio += "<option value='"+JSON.stringify(socios[i])+"''>"+socios[i].name+" "+ socios[i].apellido+"</option>";
+                }//Con este if solo mando a mostrar aquellos socios que no esten dados de baja
             }
 
             striSelectSocio="<select class='form-select' aria-label='Default select example' name='socio' required>"+striSelectSocio+"</select>"
@@ -86,7 +88,9 @@
            
             var striLibrosSelect= "<option selected value=''>Seleccionar un Libro</option>";
             for (var i = 0; i < libros.length; i++) {
+              if(!libros[i].desactivado & libros[i].disponible){
                 striLibrosSelect += "<option value='"+JSON.stringify(libros[i])+"'>"+libros[i].titulo+"</option>";
+              }
             }
 
             striLibrosSelect="<select class='form-select' aria-label='Default select example' name='libro' required>"+striLibrosSelect+"</select>";
